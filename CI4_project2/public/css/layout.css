@@ -1,0 +1,18 @@
+.content {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.main li {
+  background-color: lightblue;
+}/*# sourceMappingURL=layout.css.map */
