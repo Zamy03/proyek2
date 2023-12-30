@@ -3,8 +3,6 @@
 <?= $this->section('auth'); ?>
 
 
-<?php echo form_open('auth/login'); ?>
-
 <div class="">
 
   <section class="container">
@@ -27,41 +25,65 @@
           </a>
         </div>
 
-        <h2>Sign In</h2>
+        <h2><?= lang('Auth.loginTitle') ?></h2>
         <p>Enter you credentials to access your account.</p>
-        <div class="input-container">
-          <div class="form-group">
-            <?php echo form_label(lang('Auth.login_identity_label'), 'identity'); ?> <?php echo form_input($identity); ?>
+
+        <?= view('Myth\Auth\Views\_message_block') ?>
+
+        <form action="<?= url_to('login') ?>" method="post">
+          <?= csrf_field() ?>
+
+          <div class="input-container">
+            <?php if ($config->validFields === ['email']) : ?>
+              <div class="form-group">
+                <label for="login"><?= lang('Auth.email') ?></label>
+                <input type="email" class="form-control <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" name="login" placeholder="<?= lang('Auth.email') ?>">
+                <div class="invalid-feedback">
+                  <?= session('errors.login') ?>
+                </div>
+              </div>
+            <?php else : ?>
+
+              <div class="form-group">
+                <label for="login"><?= lang('Auth.emailOrUsername') ?></label>
+                <input type="text" class="form-control <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" name="login" placeholder="<?= lang('Auth.emailOrUsername') ?>">
+                <div class="invalid-feedback">
+                  <?= session('errors.login') ?>
+                </div>
+              </div>
+            <?php endif; ?>
+
+            <div class="form-group">
+              <label for="password"><?= lang('Auth.password') ?></label>
+              <input type="password" name="password" class="form-control  <?php if (session('errors.password')) : ?>is-invalid<?php endif ?>" placeholder="<?= lang('Auth.password') ?>">
+              <div class="invalid-feedback">
+                <?= session('errors.password') ?>
+              </div>
+            </div>
           </div>
-        </div>
-
-        <div class="input-container">
-          <div class="form-group">
-            <?php echo form_label(lang('Auth.login_password_label'), 'password'); ?> <?php echo form_input($password); ?>
-          </div>
-        </div>
-
-        <div class="remember-forgot">
-          <div class="remember-me">
-            <?php echo form_checkbox('remember', '1', false, 'id="remember"'); ?>
-            <?php echo form_label(lang('Auth.login_remember_label'), 'remember'); ?>
-          </div>
-
-          <p><a href="forgot_password"><?php echo lang('Auth.login_forgot_password'); ?></a></p>
-          <?php echo form_close(); ?>
-        </div>
 
 
-        <!-- <?php echo form_submit('submit', lang('Auth.login_submit_btn')); ?> -->
-        <button class="login-btn">
-          <span>SIGN IN</span>
-        </button>
+          <?php if ($config->allowRemembering) : ?>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="checkbox" name="remember" class="form-check-input" <?php if (old('remember')) : ?> checked <?php endif ?>>
+                <?= lang('Auth.rememberMe') ?>
+              </label>
+            </div>
+          <?php endif; ?>
 
+
+          <button type="submit" class="login-btn"><?= lang('Auth.loginAction') ?></button>
+        </form>
 
 
         <div>
-          <span>Already have an account?</span>
-          <a class="regis-btn" href="<?php echo site_url('signup') ?>">Sign Up</a>
+          <?php if ($config->activeResetter) : ?>
+            <p><a href="<?= url_to('forgot') ?>"><?= lang('Auth.forgotYourPassword') ?></a></p>
+          <?php endif; ?>
+          <?php if ($config->allowRegistration) : ?>
+            <p> <a class="regis-btn" href="<?= url_to('register') ?>"><?= lang('Auth.needAnAccount') ?></a></p>
+          <?php endif; ?>
         </div>
 
         <div class="or-divider">or</div>
@@ -70,7 +92,9 @@
           <object data="<?= base_url('/image/google.svg') ?>" type=""></object>
           <span>Sign in with Google</span>
         </button>
+
       </div>
+
     </div>
   </section>
 </div>

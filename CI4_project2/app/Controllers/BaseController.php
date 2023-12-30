@@ -8,6 +8,14 @@ use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
+use Myth\Auth\Authentication\Authentication;
+use Myth\Auth\Authorization\Authorization;
+use Myth\Auth\Config\Services;
+use CodeIgniter\HTTP\RedirectResponse;
+use CodeIgniter\Session\Session;
+use Myth\Auth\Config\Auth as AuthConfig;
+use Myth\Auth\Entities\User;
+use Myth\Auth\Models\UserModel;
 
 /**
  * Class BaseController
@@ -35,7 +43,7 @@ abstract class BaseController extends Controller
      *
      * @var array
      */
-    protected $helpers = [];
+    protected $helpers = ['auth'];
 
     protected $currentUser = null;
     protected $auth = null;
@@ -52,18 +60,16 @@ abstract class BaseController extends Controller
      */
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
-        // Do Not Edit This Line
         parent::initController($request, $response, $logger);
 
-        // Preload any models, libraries, etc, here.
+        // ...
 
-        // E.g.: $this->session = \Config\Services::session();
-        $this->auth = new \IonAuth\Libraries\IonAuth();
-        $this->currentUser = $this->auth->user()->row();
+        $authentication = Services::authentication();
+        $authorization = Services::authorization();
 
-        $this->data['auth'] = $this->auth;
-        $this->data['currentUser'] = $this->currentUser;
+        // ...
+
+        $this->data['authentication'] = $authentication;
+        $this->data['authorization'] = $authorization;
     }
-    
-    
 }

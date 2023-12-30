@@ -170,13 +170,14 @@ body .twitter svg {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-bottom: 1rem;
+  margin: 1px 0 1px 0;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 5px;
+  margin-top: 10px;
 }
 
 .form-group label {
@@ -517,4 +518,4 @@ button::before,
   .form-wrapper {
     width: 100%;
   }
-}/*# sourceMappingURL=auth.css.map */
+}
