@@ -19,43 +19,63 @@
 
     <div class="background" id="main">
         <div class="centering">
+
             <div class="articles">
-                <article>
+                <div class="card-katalog">
                     <div class="image-container">
-                        <img src="image/p1.jpg" alt="Profile Photo">
+                        <img class="gambar" src="image/p1.jpg" alt="Profile Photo">
                     </div>
-                    <div class="content">
-                        <h2 class="profile-name">Jane Doe</h2>
-                        <p class="job-title">Frontend Developer</p>
-                        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea nemo consequatur ratione
+                    <div class="content-katalog">
+                        <h2 class="nama-produk">stok</h2>
+                        <p class="harga">1.000</p>
+                        <p class=" deskripsi">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea nemo consequatur ratione
                             distinctio et nihil impedit consectetur vitae quo odio?</p>
                     </div>
-                    <div class="social-links">
-                        <a class="instagram" href="https://instagram.com/parth.webdev">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-                        <a class="linkedin" href="https://www.linkedin.com/in/parth-johar/">
-                            <i class="fa-brands fa-linkedin"></i>
-                        </a>
-                        <a class="twitter" href="https://twitter.com/parth_webdev">
-                            <i class="fa-brands fa-twitter"></i>
+                    <div class="button-beli">
+                        <a class="beli" href="#">
+                            <i>beli</i>
                         </a>
                     </div>
-                    <div class="social-links">
-                        <a class="instagram" href="https://instagram.com/parth.webdev">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-                        <a class="linkedin" href="https://www.linkedin.com/in/parth-johar/">
-                            <i class="fa-brands fa-linkedin"></i>
-                        </a>
-                        <a class="twitter" href="https://twitter.com/parth_webdev">
-                            <i class="fa-brands fa-twitter"></i>
+                </div>
+
+                <article class="card-katalog">
+                    <div class="image-container">
+                        <img class="gambar-katalog" src="image/p2.jpeg" alt="Profile Photo">
+                    </div>
+                    <div class="content-katalog">
+                        <h2 class="nama-produk">stok</h2>
+                        <p class="harga">1.000</p>
+                        <p class="deskripsi">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea nemo consequatur ratione
+                            distinctio et nihil impedit consectetur vitae quo odio?</p>
+                    </div>
+                    <div class="button-beli">
+                        <a class="beli" href="#">
+                            <i>beli</i>
                         </a>
                     </div>
                 </article>
+
+                <article class="card-katalog">
+                    <div class="image-container">
+                        <img src="image/p3.jpeg" alt="Profile Photo">
+                    </div>
+                    <div class="content-katalog">
+                        <h2 class="nama-produk">Jane Doe</h2>
+                        <p class="harga">1.000</p>
+                        <p class="deskripsi">Lorem ipsum dolo1.000etur adipisicing elit. Ea nemo consequatur ratione
+                            distinctio et nihil impedit consectetur vitae quo odio?</p>
+                    </div>
+                    <div class="button-beli">
+                        <a class="beli" href="#">
+                            <i>beli</i>
+                        </a>
+                    </div>
+                </article>
+
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <div class="background-modal" onclick="toggleModal()"></div>

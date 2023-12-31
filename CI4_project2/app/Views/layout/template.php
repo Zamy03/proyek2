@@ -29,9 +29,6 @@
                     <?= $this->renderSection('admin'); ?>
                 </div>
             </div>
-
-
-
         <?php endif; ?>
 
         <?php if (in_groups('user')) : ?>
@@ -43,6 +40,7 @@
             <div>
                 <?= $this->renderSection('menu'); ?>
             </div>
+
 
         <?php endif; ?>
         <footer>
